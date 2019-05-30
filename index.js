@@ -5,6 +5,7 @@ const signature = require('cookie-signature')
 const pathToRegexp = require('path-to-regexp')
 
 module.exports = handler => (req, res) => {
+    
     const getIp = (request) => {
         //testing manually because do not want req to be populated with attibutes.
         return [
