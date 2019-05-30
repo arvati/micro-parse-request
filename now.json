@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "name": "micro-parse-request",
+    "regions": ["all"],
+    "public": true,
+    "github": {
+        "enabled": true,
+        "autoAlias": true,
+        "silent": false,
+        "autoJobCancelation": true
+    },
+    "builds": [
+        { "src": "public/**", "use": "@now/static" },
+        { "src": "example.js", "use": "@now/node" }
+    ],
+    "routes": [
+        { "src": "/micro/(.*)", "dest": "/example.js" },
+        { "src": "/(.*)", "dest": "/public/$1"}
+    ]
+}
