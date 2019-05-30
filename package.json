@@ -1,0 +1,42 @@
+{
+  "name": "micro-parse-request",
+  "version": "0.0.1",
+  "description": "Parse incomming message from http server on node.js for zeit micro",
+  "keywords": [
+    "micro",
+    "parse",
+    "request",
+    "incomming"
+  ],
+  "private": false,
+  "homepage": "https://github.com/arvati/micro-parse-request#readme",
+  "bugs": "https://github.com/arvati/micro-parse-request/issues",
+  "main": "index.js",
+  "scripts": {
+    "example": "node --inspect node_modules/.bin/micro-dev example.js"
+  },
+  "repository": "github:arvati/micro-parse-request",
+  "author": "Ademar Arvati Filho (https://github.com/arvati)",
+  "license": "MIT",
+  "dependencies": {
+    "cookie": "^0.4.0",
+    "cookie-signature": "^1.1.0",
+    "encodeurl": "^1.0.2",
+    "ipware": "^2.0.0",
+    "original-url": "^1.2.3",
+    "path-to-regexp": "^3.0.0"
+  },
+  "peerDependencies": {
+    "micro": "^9.1.0"
+  },
+  "devDependencies": {
+    "micro": "^9.3.4",
+    "micro-dev": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=7.10.1"
+  },
+  "files": [
+    "RequestUrl.js"
+  ]
+}
