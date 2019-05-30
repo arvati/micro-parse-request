@@ -13,11 +13,11 @@
         "autoJobCancelation": true
     },
     "builds": [
-        { "src": "public/**", "use": "@now/static" },
+        { "src": "index.md", "use": "@now/md"},
         { "src": "example.js", "use": "@now/node" }
     ],
     "routes": [
         { "src": "/micro/(.*)", "dest": "/example.js" },
-        { "src": "/(.*)", "dest": "/public/$1"}
+        { "src": "(.*)", "dest": "/"}
     ]
 }

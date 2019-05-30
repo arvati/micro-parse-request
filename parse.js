@@ -1,4 +1,5 @@
 const {is_private_ip, is_valid_ip, is_loopback_ip, cleanup_ip} = require('ipware')();
+const URL = require('url').URL
 const originalurl = require('original-url');
 const cookie = require('cookie')
 const signature = require('cookie-signature')
