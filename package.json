@@ -38,6 +38,6 @@
     "node": ">=7.10.1"
   },
   "files": [
-    "RequestUrl.js"
+    "parse.js"
   ]
 }
