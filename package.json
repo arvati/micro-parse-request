@@ -30,6 +30,7 @@
     "micro": "^9.1.0"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
     "micro": "^9.3.4",
     "micro-dev": "^3.0.0"
   },
