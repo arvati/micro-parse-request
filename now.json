@@ -1,6 +1,9 @@
 {
     "version": 2,
     "name": "micro-parse-request",
+    "env": {
+        "COOKIESECRET": "@cookie_secret"
+    },
     "regions": ["all"],
     "public": true,
     "github": {

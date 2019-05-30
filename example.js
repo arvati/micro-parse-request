@@ -2,7 +2,7 @@ const send = require('micro').send;
 const microParseRequest = require('.');
 
 const options ={
-  secret: 'secret',
+  secret: process.env.COOKIESECRET,
   cookie: {}
 }
 

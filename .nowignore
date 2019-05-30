@@ -1,0 +1,9 @@
+.gitignore
+.env
+.env.example
+README.md
+LICENSE.md
+yarn.lock
+node_modules/
+.vscode/
+AUTHORS.md
