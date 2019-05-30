@@ -10,7 +10,7 @@ const parse = (req,res, {secret, cookie}) => {
     const ip = getIp(req)
     const Cookies = getCookies(req, secret, cookie)
 
-    req = Object.assign(reqParse, {
+    req = Object.assign(reqParse, Cookies, {
         originalUrl: req.url,
         origin, 
         protocol, 
@@ -23,9 +23,7 @@ const parse = (req,res, {secret, cookie}) => {
         secure: ('https' == protocol),
         nowurl: getNow(req),
         hash, 
-        search, 
-        cookies: (!Cookies)?null:Cookies.cookies, 
-        signedCookies: (!Cookies)?null:Cookies.signedCookies
+        search
     })
 
     return {reqParse, resParse}
