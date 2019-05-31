@@ -10,7 +10,8 @@ const parseRequest = microParseRequest(options)
 
 module.exports = parseRequest(async (req, res) => {
     return send(res,200,
-`originalUrl: ${req.originalUrl},
+`secret: would be just req.secret,
+originalUrl: ${req.originalUrl},
 origin: ${req.origin},
 protocol: ${req.protocol},
 port: ${req.port},

@@ -14,10 +14,12 @@
     },
     "builds": [
         { "src": "index.md", "use": "@now/md"},
-        { "src": "example.js", "use": "@now/node" }
+        { "src": "example.js", "use": "@now/node" },
+        { "src": "favicon.ico", "use": "@now/static" }
     ],
     "routes": [
         { "src": "/micro/(.*)", "dest": "/example.js" },
+        { "src": "/favicon.ico$", "dest": "/favicon.ico" },
         { "src": "(.*)", "dest": "/"}
     ]
 }

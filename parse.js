@@ -119,7 +119,7 @@ const getCookies = (request, secret) => {
         signedCookies = getJSONCookies(signedCookies)
     }
     cookies = getJSONCookies(cookies)
-    return {cookies, signedCookies}
+    return {cookies, signedCookies, secret: secrets[0]}
 }
 
 const setCookies = (response, name, value, secret, options = {}) => {
