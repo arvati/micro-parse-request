@@ -1,4 +1,4 @@
-const {is_private_ip, is_valid_ip, is_loopback_ip, cleanup_ip} = require('ipware')();
+const get_ip = require('ipware')().get_ip;
 const URL = require('url').URL
 const originalurl = require('original-url');
 const cookie = require('cookie')
@@ -8,7 +8,7 @@ const pathToRegexp = require('path-to-regexp')
 const parse = (req,res, {secret, cookie}) => {
     const reqParse = {}, resParse = {}
     const {origin, protocol, host, hostname, port, pathname, search, hash} = new URL(originalurl(req).full)
-    const ip = getIp(req)
+    const ipInfo = getIp(req)
     const Cookies = getCookies(req, secret, cookie)
 
     req = Object.assign(reqParse, Cookies, {
@@ -16,8 +16,8 @@ const parse = (req,res, {secret, cookie}) => {
         origin, 
         protocol, 
         port: (port !== '') ? Number(port) : undefined,
-        ip,
-        ipRoutable: !is_private_ip(ip),
+        ip : ipInfo.clientIp,
+        ipRoutable: ipInfo.clientIpRoutable,
         host, 
         hostname, 
         path: pathname,
@@ -31,9 +31,10 @@ const parse = (req,res, {secret, cookie}) => {
 }
 
 const getIp = (request) => {
-    //testing manually because do not want req to be populated with attibutes.
-    return [
-        "HTTP_X_FORWARDED_FOR",
+    const localReq = Object.assign({},request);
+    return ipInfo = get_ip(localReq)
+
+/*         "HTTP_X_FORWARDED_FOR",
         "HTTP_CLIENT_IP",
         "HTTP_X_REAL_IP",
         "HTTP_X_FORWARDED",
@@ -45,30 +46,8 @@ const getIp = (request) => {
         "X-Real-IP",
         "X-Client-IP",
         "X-Forwarded-For",
-        "REMOTE_ADDR"
-      ].reduce(
-                (acc, key) => (request.headers[key] || 
-                    request.headers[key.toUpperCase()] ||
-                    request.headers[key.toLowerCase()] ||
-                    request.headers[key.toLowerCase().replace(/_/g, '-')] ||
-                    request.headers[key.toUpperCase().replace(/_/g, '-')] ||
-                    request.connection.remoteAddress || '127.0.0.1').split(/\s*,\s*/).reduce(
-                            (ret, cur) => {
-                                last = cleanup_ip(ret)
-                                if (last && is_valid_ip(last) && !is_private_ip(last)) return last 
-                                else {
-                                    ip = cleanup_ip(cur)
-                                    if (ip && is_valid_ip(ip)) {
-                                        if (is_private_ip(ip)) {
-                                            if (!last || (!is_loopback_ip(ip) && is_loopback_ip(last))) return ip
-                                        } else return ip
-                                    }
-                                    else return last
-                                }
-                            }, 
-                            acc
-                        )
-                ) || '127.0.0.1';
+        "REMOTE_ADDR" */
+
 }
 
 const getNow = (request) =>{
