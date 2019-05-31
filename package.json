@@ -13,8 +13,9 @@
   "bugs": "https://github.com/arvati/micro-parse-request/issues",
   "main": "index.js",
   "scripts": {
-    "example": "node --inspect node_modules/.bin/micro-dev example.js",
-    "dev": "now dev"
+    "serve": "node --inspect node_modules/.bin/micro-dev example.js",
+    "dev": "now dev",
+    "deploy": "now"
   },
   "repository": "github:arvati/micro-parse-request",
   "author": "Ademar Arvati Filho (https://github.com/arvati)",
