@@ -9,7 +9,7 @@ const options ={
 const parseRequest = microParseRequest(options)
 
 module.exports = parseRequest(async (req, res, parse) => {
-    return send(res,200,
+  return send(res,200,
 `Incomming Message (req): 
 req.secret: would be just req.secret,
 req.originalUrl: ${req.originalUrl},
@@ -25,10 +25,10 @@ req.secure: ${req.secure},
 req.nowurl: ${req.nowurl},
 req.hash: ${req.hash},
 req.search: ${req.search},
-req.cookies: ${req.cookies},
-req.signedCookies: ${req.signedCookies}
+req.cookies: ${JSON.stringify(req.cookies)},
+req.signedCookies: ${JSON.stringify(req.signedCookies)}
 
-Parse (parse): 
+Parse Argument (parse): 
 parse.req.secret: would be just parse.req.secret,
 parse.req.originalUrl: ${parse.req.originalUrl},
 parse.req.origin: ${parse.req.origin},
@@ -43,6 +43,6 @@ parse.req.secure: ${parse.req.secure},
 parse.req.nowurl: ${parse.req.nowurl},
 parse.req.hash: ${parse.req.hash},
 parse.req.search: ${parse.req.search},
-parse.req.cookies: ${parse.req.cookies},
-parse.req.signedCookies: ${parse.req.signedCookies}`)
+parse.req.cookies: ${JSON.stringify(parse.req.cookies)},
+parse.req.signedCookies: ${JSON.stringify(parse.req.signedCookies)}`)
   })

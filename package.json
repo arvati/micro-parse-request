@@ -13,7 +13,8 @@
   "bugs": "https://github.com/arvati/micro-parse-request/issues",
   "main": "index.js",
   "scripts": {
-    "example": "node --inspect node_modules/.bin/micro-dev example.js"
+    "example": "node --inspect node_modules/.bin/micro-dev example.js",
+    "dev": "now dev" // to work on alpine = ln -sf /usr/bin/node ~/.cache/co.zeit.fun/runtimes/nodejs8.10/bin/
   },
   "repository": "github:arvati/micro-parse-request",
   "author": "Ademar Arvati Filho (https://github.com/arvati)",
@@ -31,11 +32,11 @@
   },
   "devDependencies": {
     "eslint": "^5.16.0",
-    "micro": "^9.3.4",
+    "micro": "^9.1.0",
     "micro-dev": "^3.0.0"
   },
   "engines": {
-    "node": ">=7.10.1"
+    "node": ">7.10.1"
   },
   "files": [
     "parse.js",

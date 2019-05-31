@@ -43,7 +43,7 @@ const getNow = (request) =>{
 const getCookies = (request, secret) => {
     var secrets = !secret || Array.isArray(secret) ? (secret || []) : [secret]
     var cookiesHeader = request.headers.cookie
-    if (!cookiesHeader) return null
+    if (!cookiesHeader) return {cookies : null, signedCookies: null, secret: secrets[0]}
 
     const getJSONCookie = (str) => {
         if (typeof str !== 'string' || str.substr(0, 2) !== 'j:') return undefined 
@@ -77,10 +77,12 @@ const getCookies = (request, secret) => {
         return ret
     }
 
-    var cookies = cookie.parse(cookiesHeader)
-        // parse signed cookies
+    var cookies = Object.create(null);
+    var signedCookies = Object.create(null);
+
+    cookies = cookie.parse(cookiesHeader)
     if (secrets.length !== 0) {
-        var signedCookies = getSignedCookies(cookies, secrets)
+        signedCookies = getSignedCookies(cookies, secrets)
         signedCookies = getJSONCookies(signedCookies)
     }
     cookies = getJSONCookies(cookies)
