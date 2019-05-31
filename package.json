@@ -14,7 +14,7 @@
   "main": "index.js",
   "scripts": {
     "example": "node --inspect node_modules/.bin/micro-dev example.js",
-    "dev": "now dev" // to work on alpine = ln -sf /usr/bin/node ~/.cache/co.zeit.fun/runtimes/nodejs8.10/bin/
+    "dev": "now dev"
   },
   "repository": "github:arvati/micro-parse-request",
   "author": "Ademar Arvati Filho (https://github.com/arvati)",
