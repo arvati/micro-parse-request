@@ -1,4 +1,4 @@
-const get_ip = require('ipware')().get_ip;
+const ipware = require('ipware');
 const URL = require('url').URL
 const originalurl = require('original-url');
 const cookie = require('cookie')
@@ -31,23 +31,9 @@ const parse = (req,res, {secret, cookie}) => {
 }
 
 const getIp = (request) => {
+    const get_ip = ipware(__dirname + '/ipware.json').get_ip;
     const localReq = Object.assign({},request);
     return ipInfo = get_ip(localReq)
-
-/*         "HTTP_X_FORWARDED_FOR",
-        "HTTP_CLIENT_IP",
-        "HTTP_X_REAL_IP",
-        "HTTP_X_FORWARDED",
-        "HTTP_X_CLUSTER_CLIENT_IP",
-        "HTTP_FORWARDED_FOR",
-        "HTTP_FORWARDED",
-        "HTTP_VIA",
-        "CF-Connecting-IP",
-        "X-Real-IP",
-        "X-Client-IP",
-        "X-Forwarded-For",
-        "REMOTE_ADDR" */
-
 }
 
 const getNow = (request) =>{

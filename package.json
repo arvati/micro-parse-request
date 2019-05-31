@@ -38,6 +38,7 @@
     "node": ">=7.10.1"
   },
   "files": [
-    "parse.js"
+    "parse.js",
+    "ipware.json"
   ]
 }
