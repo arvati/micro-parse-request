@@ -15,7 +15,9 @@
   "scripts": {
     "serve": "node --inspect node_modules/.bin/micro-dev example.js",
     "dev": "now dev",
-    "deploy": "now"
+    "deploy": "now",
+    "git": "git add . && git commit -m",
+    "postgit": "git push --all"
   },
   "repository": "github:arvati/micro-parse-request",
   "author": "Ademar Arvati Filho (https://github.com/arvati)",
