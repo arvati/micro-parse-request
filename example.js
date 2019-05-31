@@ -2,13 +2,22 @@ const send = require('micro').send;
 const microParseRequest = require('.');
 
 const options ={
-  secret: process.env.COOKIESECRET,
-  cookie: {}
+  secret: [process.env.COOKIESECRET,'oldsecret'],
+  cookie: {},
+  query:{},
+  path: ['/micro/param1/:id1/(.*)','/micro/param2/:id2/(.*)'],
+  param:{}
 }
 
 const parseRequest = microParseRequest(options)
 
 module.exports = parseRequest(async (req, res, parse) => {
+
+  querysearch = parse.utils.querySearch(parse.req.query)
+  pathmatch = parse.utils.pathMatch(options.path, parse.req.path)
+  signed = parse.utils.sign('hello world','oldsecret')
+  verify = parse.utils.verify(signed,options.secret)
+
   return send(res,200,
 `Incomming Message (req): 
 req.secret: would be just req.secret,
@@ -25,7 +34,9 @@ req.secure: ${req.secure},
 req.nowurl: ${req.nowurl},
 req.hash: ${req.hash},
 req.search: ${req.search},
-req.query: ${req.query},
+req.query: ${JSON.stringify(req.query)},
+req.params: ${JSON.stringify(req.params)},
+req.matched: ${req.matched},
 req.cookies: ${JSON.stringify(req.cookies)},
 req.signedCookies: ${JSON.stringify(req.signedCookies)}
 
@@ -44,7 +55,15 @@ parse.req.secure: ${parse.req.secure},
 parse.req.nowurl: ${parse.req.nowurl},
 parse.req.hash: ${parse.req.hash},
 parse.req.search: ${parse.req.search},
-parse.req.query: ${parse.req.query},
+parse.req.query: ${JSON.stringify(parse.req.query)},
+parse.req.params: ${JSON.stringify(parse.req.params)},
+parse.req.matched: ${parse.req.matched},
 parse.req.cookies: ${JSON.stringify(parse.req.cookies)},
-parse.req.signedCookies: ${JSON.stringify(parse.req.signedCookies)}`)
+parse.req.signedCookies: ${JSON.stringify(parse.req.signedCookies)}
+
+parse.utils.querySearch: ${querysearch},
+parse.utils.pathMatch: ${pathmatch},
+parse.utils.sign: ${signed},
+parse.utils.verify: ${verify}
+`)
   })
