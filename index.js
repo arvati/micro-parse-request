@@ -6,6 +6,7 @@ module.exports = (options) => {
         const {reqParse,resParse} = parse(req,res,options)
         const newReq = Object.assign(req, reqParse);
         const newRes = Object.assign(res, resParse);
-        return next(newReq, newRes);
+        args.push({ req: reqParse, res: resParse });
+        return next(newReq, newRes, ...args);
     }}
 }
