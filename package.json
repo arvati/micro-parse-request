@@ -13,7 +13,11 @@
   "bugs": "https://github.com/arvati/micro-parse-request/issues",
   "main": "index.js",
   "scripts": {
-    "example": "node --inspect node_modules/.bin/micro-dev example.js"
+    "serve": "node --inspect node_modules/.bin/micro-dev example.js",
+    "dev": "now dev",
+    "deploy": "now",
+    "git": "git add . && git commit -m",
+    "postgit": "git push --all"
   },
   "repository": "github:arvati/micro-parse-request",
   "author": "Ademar Arvati Filho (https://github.com/arvati)",
@@ -31,11 +35,11 @@
   },
   "devDependencies": {
     "eslint": "^5.16.0",
-    "micro": "^9.3.4",
+    "micro": "^9.1.0",
     "micro-dev": "^3.0.0"
   },
   "engines": {
-    "node": ">=7.10.1"
+    "node": ">7.10.1"
   },
   "files": [
     "parse.js",

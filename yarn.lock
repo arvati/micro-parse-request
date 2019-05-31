@@ -1379,7 +1379,7 @@ micro-dev@^3.0.0:
     pretty-error "2.1.1"
     string-length "2.0.0"
 
-micro@^9.3.4:
+micro@^9.1.0:
   version "9.3.4"
   resolved "https://registry.yarnpkg.com/micro/-/micro-9.3.4.tgz#745a494e53c8916f64fb6a729f8cbf2a506b35ad"
   integrity sha512-smz9naZwTG7qaFnEZ2vn248YZq9XR+XoOH3auieZbkhDL4xLOxiE+KqG8qqnBeKfXA9c1uEFGCxPN1D+nT6N7w==
