@@ -25,6 +25,7 @@ req.secure: ${req.secure},
 req.nowurl: ${req.nowurl},
 req.hash: ${req.hash},
 req.search: ${req.search},
+req.query: ${req.query},
 req.cookies: ${req.cookies},
 req.signedCookies: ${req.signedCookies}
 
@@ -43,6 +44,7 @@ parse.req.secure: ${parse.req.secure},
 parse.req.nowurl: ${parse.req.nowurl},
 parse.req.hash: ${parse.req.hash},
 parse.req.search: ${parse.req.search},
+parse.req.query: ${parse.req.query},
 parse.req.cookies: ${parse.req.cookies},
 parse.req.signedCookies: ${parse.req.signedCookies}`)
   })

@@ -1,8 +1,9 @@
 const ipware = require('ipware');
 const URL = require('url').URL
 const originalurl = require('original-url');
-const cookie = require('cookie')
-const signature = require('cookie-signature')
+const cookie = require('cookie');
+const signature = require('cookie-signature');
+const qs = require('qs');
 const pathToRegexp = require('path-to-regexp')
 
 const parse = (req,res, {secret, cookie}) => {
@@ -24,7 +25,8 @@ const parse = (req,res, {secret, cookie}) => {
         secure: ('https' == protocol),
         nowurl: getNow(req),
         hash, 
-        search
+        search,
+        query: qs(search)
     })
 
     return {reqParse, resParse}
