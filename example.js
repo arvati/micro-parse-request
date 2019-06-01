@@ -1,22 +1,24 @@
 const send = require('micro').send;
 const microParseRequest = require('.');
+const {getKeyPair, querySearch, pathMatch, sign, verify} = microParseRequest.utils
 
 const options ={
-  secret: [process.env.COOKIESECRET,'oldsecret'],
+  secret: process.env.COOKIESECRET,
   cookie: {},
   query:{},
   path: ['/micro/param1/:id1/(.*)','/micro/param2/:id2/(.*)'],
   param:{}
 }
+options.keyPair = getKeyPair(options.secret, 1024)
 
 const parseRequest = microParseRequest(options)
 
 module.exports = parseRequest(async (req, res, parse) => {
 
-  querysearch = parse.utils.querySearch(parse.req.query)
-  pathmatch = parse.utils.pathMatch(options.path, parse.req.path)
-  signed = parse.utils.sign('hello world','oldsecret')
-  verify = parse.utils.verify(signed,options.secret)
+  querysearch = querySearch(parse.req.query)
+  pathmatch = pathMatch(options.path, parse.req.path)
+  signed = sign('hello world',options.keyPair.privateKey, options.secret)
+  verifed = verify(signed,options.keyPair.publicKey)
 
   return send(res,200,
 `Incomming Message (req): 
@@ -64,6 +66,6 @@ parse.req.signedCookies: ${JSON.stringify(parse.req.signedCookies)}
 parse.utils.querySearch: ${querysearch},
 parse.utils.pathMatch: ${pathmatch},
 parse.utils.sign: ${signed},
-parse.utils.verify: ${verify}
+parse.utils.verify: ${verifed}
 `)
   })
