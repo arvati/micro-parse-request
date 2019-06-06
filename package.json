@@ -11,9 +11,11 @@
   "private": false,
   "homepage": "https://github.com/arvati/micro-parse-request#readme",
   "bugs": "https://github.com/arvati/micro-parse-request/issues",
-  "main": "index.js",
+  "main": "/lib/index.js",
   "scripts": {
-    "serve": "node --inspect node_modules/.bin/micro-dev example.js",
+    "test": "DOTENV_CONFIG_PATH=./test/.env mocha -R spec",
+    "doc": "DOTENV_CONFIG_PATH=./test/.env mocha -R markdown > USAGE.md",
+    "serve": "node --inspect node_modules/.bin/micro-dev test/example.js",
     "dev": "now dev",
     "deploy": "now",
     "git": "git add . && git commit -m",
@@ -33,15 +35,19 @@
     "micro": "^9.1.0"
   },
   "devDependencies": {
+    "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
     "micro": "^9.1.0",
-    "micro-dev": "^3.0.0"
+    "micro-dev": "^3.0.0",
+    "mocha": "^6.1.4",
+    "supertest": "^4.0.2"
   },
   "engines": {
     "node": ">7.10.1"
   },
   "files": [
-    "parse.js",
-    "ipware.json"
+    "/lib/index.js",
+    "/lib/parse.js",
+    "/lib/ipware.json"
   ]
 }

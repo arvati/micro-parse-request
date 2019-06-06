@@ -1,5 +1,5 @@
 const send = require('micro').send;
-const microParseRequest = require('.');
+const microParseRequest = require('../lib/');
 const {getKeyPair, querySearch, pathMatch, sign, verify} = microParseRequest.utils
 
 const options ={
