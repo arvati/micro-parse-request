@@ -16,8 +16,8 @@ module.exports = parseRequest(async (req, res, parse) => {
 
   querysearch = querySearch(parse.req.query)
   pathmatch = pathMatch(options.path, parse.req.path)
-  signed = sign('hello world',options.keyPair.privateKey, options.secret)
-  verifed = verify(signed,options.keyPair.publicKey)
+  signed = await sign('hello world',options.keyPair.privateKey, options.secret)
+  verifed = await verify(signed,options.keyPair.publicKey)
 
   const properties = [
     "originalUrl",
