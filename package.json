@@ -26,10 +26,12 @@
   "license": "MIT",
   "dependencies": {
     "cookie": "^0.4.0",
+    "crypto-keys": "https://github.com/arvati/crypto-keys/releases/download/v0.0.1-alpha/crypto-keys-v0.0.1.tgz",
     "ipware": "^2.0.0",
     "original-url": "^1.2.3",
     "path-to-regexp": "^3.0.0",
-    "qs": "^6.7.0"
+    "qs": "^6.7.0",
+    "simple-crypt": "^2.1.6"
   },
   "peerDependencies": {
     "micro": "^9.1.0"
@@ -49,6 +51,7 @@
   "files": [
     "/lib/index.js",
     "/lib/parse.js",
-    "/lib/ipware.json"
+    "/lib/ipware.json",
+    "AUTHORS.md"
   ]
 }
