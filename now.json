@@ -13,7 +13,7 @@
         "autoJobCancelation": true
     },
     "builds": [
-        { "src": "/public/index.md", "use": "@now/md"},
+        { "src": "/public/*.md", "use": "@now/md"},
         { "src": "/test/example.js", "use": "@now/node" },
         { "src": "/public/favicon.ico", "use": "@now/static" }
     ],

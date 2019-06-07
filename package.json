@@ -14,7 +14,7 @@
   "main": "/lib/index.js",
   "scripts": {
     "test": "DOTENV_CONFIG_PATH=./test/.env mocha -R spec",
-    "doc": "DOTENV_CONFIG_PATH=./test/.env mocha -R markdown > USAGE.md",
+    "doc": "DOTENV_CONFIG_PATH=./test/.env mocha -R markdown > public/usage.md",
     "serve": "node --inspect node_modules/.bin/micro-dev test/example.js",
     "dev": "now dev",
     "deploy": "now",
@@ -40,6 +40,7 @@
     "micro": "^9.1.0",
     "micro-dev": "^3.0.0",
     "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
     "supertest": "^4.0.2"
   },
   "engines": {

@@ -1,9 +1,13 @@
 .gitignore
 .env
-.env.example
+test/.env
+test/mocha.opts
+test/test.js
 README.md
 LICENSE.md
 yarn.lock
 node_modules/
-.vscode/
+.vscode
 AUTHORS.md
+.nyc_output
+coverage
