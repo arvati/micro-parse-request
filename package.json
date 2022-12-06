@@ -30,7 +30,7 @@
     "ipware": "^2.0.0",
     "original-url": "^1.2.3",
     "path-to-regexp": "^3.0.0",
-    "qs": "^6.7.0",
+    "qs": "^6.7.3",
     "simple-crypt": "^2.1.6"
   },
   "peerDependencies": {
